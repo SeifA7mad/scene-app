@@ -1,3 +1,5 @@
+import AppLanding from "src/components/AppLanding";
+
 export default function Page() { 
-    return <div>Page</div>
+    return <AppLanding />
 }
