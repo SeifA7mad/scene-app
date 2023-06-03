@@ -2,6 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'address',
+  title: 'Address',
   type: 'object',
   fields: [
     defineField({

@@ -18,19 +18,13 @@ export default defineType({
       validation: (rule) => rule.required().min(2).max(50),
     }),
     defineField({
-      name: 'profileImage',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: 'phone',
       type: 'string',
       validation: (rule) => rule.required().length(11),
     }),
     defineField({
       name: 'address',
+      title: 'Address',
       type: 'array',
       of: [defineArrayMember({ type: 'address'})],
       validation: (rule) => rule.required().min(1),
