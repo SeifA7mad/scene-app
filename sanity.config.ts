@@ -3,16 +3,16 @@
  */
 
 // plugins
-import { table } from '@sanity/table';
+import { dashboardTool } from '@sanity/dashboard'
+import { table } from '@sanity/table'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import { documentListWidget } from 'sanity-plugin-dashboard-widget-document-list'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import { apiVersion, dataset, projectId } from './src/sanity/env'
 import { schema } from './src/sanity/schema'
-
-
 
 export default defineConfig({
   basePath: '/studio',
@@ -22,9 +22,21 @@ export default defineConfig({
   schema,
   plugins: [
     deskTool(),
-    // Vision lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
+    dashboardTool({
+      widgets: [
+        documentListWidget({
+          types: ['product'],
+          title: 'Products',
+          order: '_updatedAt desc',
+        }),
+        documentListWidget({
+          types: ['customer'],
+          title: 'Customers',
+          order: '_updatedAt desc',
+        }),
+      ],
+    }),
     visionTool({ defaultApiVersion: apiVersion }),
-    table()
+    table(),
   ],
 })

@@ -14,6 +14,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@sanity/dashboard": "^3.1.4",
     "@sanity/icons": "^2.3.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/table": "^1.0.1",
@@ -25,7 +26,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
-    "sanity": "^3.11.5"
+    "sanity": "^3.11.5",
+    "sanity-plugin-dashboard-widget-document-list": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.8",
