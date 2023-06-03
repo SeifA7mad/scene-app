@@ -1,8 +1,11 @@
 import { SchemaTypeDefinition } from 'sanity'
 
-// schemas
+// documents
 import customer from './documents/customer'
+import location from './documents/location'
+// objects
+import address from './objects/address'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [customer],
+  types: [customer, location, address],
 }
