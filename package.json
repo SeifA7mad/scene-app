@@ -14,8 +14,10 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@sanity/demo": "^1.0.2",
+    "@sanity/icons": "^2.3.1",
+    "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.11.5",
+    "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "next": "^13.4.4",
     "next-sanity": "^4.3.3",
