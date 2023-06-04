@@ -29,6 +29,20 @@ export default defineType({
       name: 'description',
       type: 'array',
       of: [{ type: 'block' }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'category',
+      type: 'reference',
+      to: [{ type: 'category' }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'keywords',
+      type: 'array',
+      description: 'keywords for SEO',
+      of: [{ type: 'string' }],
+      validation: (rule) => rule.required().unique().min(1).max(5),
     }),
     defineField({
       name: 'price',
@@ -38,6 +52,7 @@ export default defineType({
     defineField({
       name: 'color',
       type: 'string',
+      description: 'hex color code',
       validation: (rule) =>
         rule
           .required()
@@ -123,66 +138,33 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'offers',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'percentage',
-              type: 'number',
-              validation: (rule) =>
-                rule.required().integer().greaterThan(0).lessThan(101),
-            }),
-            defineField({
-              name: 'expiryDate',
-              type: 'date',
-              options: {
-                dateFormat: 'yyyy-MM-DD',
-              },
-              validation: (rule) =>
-                rule
-                  .required()
-                  .min(new Date().toISOString())
-                  .error("Can't assign older date"),
-            }),
-            {
-              name: 'isExpired',
-              type: 'boolean',
-              initialValue: false,
-            },
-          ],
+      name: 'offer',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'percentage',
+          type: 'number',
+          validation: (rule) =>
+            rule.required().integer().greaterThan(0).lessThan(101),
+        }),
+        defineField({
+          name: 'expiryDate',
+          type: 'datetime',
+          options: {
+            dateFormat: 'yyyy-MM-DD',
+          },
+          validation: (rule) =>
+            rule
+              .required()
+              .min(new Date().toISOString())
+              .error("Can't assign older date"),
         }),
       ],
-      validation: (rule) =>
-        rule.custom((offers, ctx) => {
-          const doc = ctx.document as unknown as {
-            offers: { expiryDate: string; isExpired: boolean }[]
-          }
-
-          // if there are more than one valid offer (not expired)
-          // then return error
-          if (
-            doc.offers?.filter(
-              (offer) =>
-                new Date(offer.expiryDate).getTime() > Date.now() &&
-                !(<any>offer).isExpired
-            ).length > 1
-          ) {
-            return {
-              message: 'There are more than one valid offer',
-            }
-          }
-
-          return true
-        }),
     }),
     defineField({
-      name: 'category',
-      type: 'reference',
-      to: [{ type: 'category' }],
-      validation: (rule) => rule.required(),
+      name: 'sizeChart',
+      title: 'Size Chart',
+      type: 'table',
     }),
     defineField({
       name: 'subscribers',
@@ -242,18 +224,18 @@ export default defineType({
               validation: (rule) => rule.required().max(1000),
             }),
             defineField({
-              name: 'answer',
-              type: 'string',
-              validation: (rule) => rule.required().max(1000),
+              name: 'answers',
+              type: 'array',
+              of: [
+                defineArrayMember({
+                  type: 'string',
+                  validation: (rule) => rule.required().max(1000),
+                }),
+              ]
             }),
           ],
         }),
       ],
-    }),
-    defineField({
-      name: 'sizeChart',
-      title: 'Size Chart',
-      type: 'table',
     }),
   ],
 })

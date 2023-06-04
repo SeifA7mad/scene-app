@@ -13,6 +13,16 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'isTopLevel',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'description',
+      type: 'string',
+      description: 'description for SEO',
+    }),
+    defineField({
       name: 'subCategories',
       type: 'array',
       of: [defineArrayMember({ type: 'reference', to: [{ type: 'category' }] })],
