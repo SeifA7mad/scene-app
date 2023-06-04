@@ -14,6 +14,14 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+      },
+      validation: (rule) => rule.required().warning('Slug is required'),
+    }),
+    defineField({
       name: 'sku',
       title: 'SKU',
       type: 'string',
@@ -48,6 +56,11 @@ export default defineType({
       name: 'price',
       type: 'number',
       validation: (rule) => rule.required().greaterThan(0),
+    }),
+    defineField({
+      name: 'soldQuantity',
+      type: 'number',
+      hidden: true,
     }),
     defineField({
       name: 'color',

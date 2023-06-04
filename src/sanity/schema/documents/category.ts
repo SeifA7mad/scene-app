@@ -13,6 +13,14 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+      validation: (rule) => rule.required().warning('Slug is required'),
+    }),
+    defineField({
       name: 'isTopLevel',
       type: 'boolean',
       initialValue: false,
