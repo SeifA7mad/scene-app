@@ -1,6 +1,6 @@
 import { MdShoppingBasket } from 'react-icons/md'
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { SIZES_LIST } from 'src/lib/constants'
+import { SEASONS_LIST, SIZES_LIST } from 'src/lib/constants'
 
 export default defineType({
   name: 'product',
@@ -38,6 +38,19 @@ export default defineType({
       type: 'array',
       of: [{ type: 'block' }],
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'season',
+      type: 'string',
+      options: {
+        list: SEASONS_LIST,
+      },
+      initialValue: 'summer',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'merchantName',
+      type: 'string',
     }),
     defineField({
       name: 'category',

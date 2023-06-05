@@ -29,3 +29,22 @@ export const SIZES_LIST: TitledListValue<string>[] = [
     value: 'xxl',
   },
 ]
+
+export const SEASONS_LIST: TitledListValue<string>[] = [
+  {
+    title: 'Summer',
+    value: 'summer',
+  },
+  {
+    title: 'Winter',
+    value: 'winter',
+  },
+  {
+    title: 'Spring',
+    value: 'spring',
+  },
+  {
+    title: 'Autumn',
+    value: 'autumn',
+  },
+];
