@@ -45,5 +45,12 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'wishlist',
+      type: 'array',
+      initialValue: [],
+      hidden: true,
+      of: [defineArrayMember({ type: 'reference', to: [{ type: 'product' }] })],
+    })
   ],
 })

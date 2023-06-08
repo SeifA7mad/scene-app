@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { metadata as studioMetadata } from 'next-sanity/studio/metadata'
 
-
 // Set the right `viewport`, `robots` and `referer` meta tags
 export const metadata: Metadata = {
   ...studioMetadata,
@@ -10,15 +9,20 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) {
-    return (
-      <html lang="en">
-        <body style={{
-          margin: 0,
-        }}>{children}</body>
-      </html>
-    );
-  }
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <>
+      <body
+        style={{
+          width: '100%',
+        }}
+      >
+        {' '}
+        {children}
+      </body>
+    </>
+  )
+}
