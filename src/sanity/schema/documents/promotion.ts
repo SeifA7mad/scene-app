@@ -19,6 +19,18 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'maxRedemptions',
+      type: 'number',
+      initialValue: 1,
+      validation: (rule) => rule.required().integer().greaterThan(0),
+    }),
+    defineField({
+      name: 'redeemed',
+      type: 'number',
+      initialValue: 0,
+      hidden: true,
+    }),
+    defineField({
       name: 'customers',
       title: 'Allowed customers',
       type: 'array',

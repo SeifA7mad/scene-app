@@ -28,11 +28,25 @@ export default defineConfig({
           types: ['product'],
           title: 'Products',
           order: '_updatedAt desc',
+          layout: {
+            width: 'full'
+          }
         }),
         documentListWidget({
           types: ['customer'],
           title: 'Customers',
           order: '_updatedAt desc',
+          layout: {
+            width: 'full'
+          }
+        }),
+        documentListWidget({
+          types: ['order'],
+          title: 'Orders',
+          order: '_updatedAt desc',
+          layout: {
+            width: 'full',
+          },
         }),
       ],
     }),
