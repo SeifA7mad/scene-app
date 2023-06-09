@@ -9,6 +9,7 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { documentListWidget } from 'sanity-plugin-dashboard-widget-document-list'
+import OrdersWidget from 'src/sanity/widget/OrdersWidget'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import { apiVersion, dataset, projectId } from './src/sanity/env'
@@ -24,30 +25,37 @@ export default defineConfig({
     deskTool(),
     dashboardTool({
       widgets: [
-        documentListWidget({
-          types: ['product'],
-          title: 'Products',
-          order: '_updatedAt desc',
-          layout: {
-            width: 'full'
-          }
-        }),
-        documentListWidget({
-          types: ['customer'],
-          title: 'Customers',
-          order: '_updatedAt desc',
-          layout: {
-            width: 'full'
-          }
-        }),
-        documentListWidget({
-          types: ['order'],
-          title: 'Orders',
-          order: '_updatedAt desc',
+        {
+          name: 'orders',
+          component: OrdersWidget,
           layout: {
             width: 'full',
           },
-        }),
+        },
+        // documentListWidget({
+        //   types: ['product'],
+        //   title: 'Products',
+        //   order: '_updatedAt desc',
+        //   layout: {
+        //     width: 'full'
+        //   }
+        // }),
+        // documentListWidget({
+        //   types: ['customer'],
+        //   title: 'Customers',
+        //   order: '_updatedAt desc',
+        //   layout: {
+        //     width: 'full'
+        //   }
+        // }),
+        // documentListWidget({
+        //   types: ['order'],
+        //   title: 'Orders',
+        //   order: '_updatedAt desc',
+        //   layout: {
+        //     width: 'full',
+        //   },
+        // }),
       ],
     }),
     visionTool({ defaultApiVersion: apiVersion }),

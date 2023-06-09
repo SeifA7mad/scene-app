@@ -4,19 +4,30 @@
   },
   "editor.formatOnType": true,
   "editor.formatOnPaste": false,
-
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.semi": true,
+  "prettier.arrowParens": "always",
+  "prettier.singleQuote": false,
+  "prettier.endOfLine": "auto",
+  "prettier.singleAttributePerLine": true,
+
   // eslint
   "eslint.enable": true,
-  "eslint.format.enable": true,
+  "eslint.format.enable": false,
   "eslint.validate": [
     "javascript",
     "typescript"
   ],
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  }
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*ClassName"
+  ]
 }

@@ -27,7 +27,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "sanity": "^3.11.5",
-    "sanity-plugin-dashboard-widget-document-list": "^1.0.1"
+    "sanity-plugin-dashboard-widget-document-list": "^1.0.1",
+    "swr": "^2.1.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.8",

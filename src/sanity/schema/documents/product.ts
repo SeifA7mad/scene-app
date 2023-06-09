@@ -73,7 +73,8 @@ export default defineType({
     defineField({
       name: 'soldQuantity',
       type: 'number',
-      hidden: true,
+      initialValue: 0,
+      readOnly: true,
     }),
     defineField({
       name: 'color',

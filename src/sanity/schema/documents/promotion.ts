@@ -28,7 +28,7 @@ export default defineType({
       name: 'redeemed',
       type: 'number',
       initialValue: 0,
-      hidden: true,
+      readOnly: true,
     }),
     defineField({
       name: 'customers',

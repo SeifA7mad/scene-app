@@ -1,0 +1,18 @@
+{
+  "func": {
+    "prefix": "func",
+    "description": "Next 13 TS base",
+    "scope": "tsx",
+    "body": [
+      "interface Props {}",
+      "",
+      "export default function functionName(props: Props) {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t component",
+      "\t\t</div>",
+      "\t)",
+      "}"
+    ]
+  }
+}
