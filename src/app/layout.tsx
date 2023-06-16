@@ -1,19 +1,19 @@
-import 'src/styles/global.css'
+import "src/styles/global.css";
 
-import { Metadata } from 'next'
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Scene e-commerce',
-}
+  title: "Scene e-commerce",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html data-theme="retro" lang="en">
-      {children}
+    <html data-theme='bumblebee' lang='en'>
+      <body>{children}</body>
     </html>
-  )
+  );
 }

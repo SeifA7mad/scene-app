@@ -125,3 +125,4 @@ export interface Order extends SanityDocument {
   paymentMethod: (typeof PAYMENTMETHODS_LIST)[number]['value']
   promoCodeApplied?: Promotion
 }
+
