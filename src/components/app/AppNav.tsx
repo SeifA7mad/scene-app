@@ -11,7 +11,7 @@ const navLinks = [
   },
   {
     title: "Collections",
-    href: "/about",
+    href: "/app/collections",
   },
   {
     title: "About",

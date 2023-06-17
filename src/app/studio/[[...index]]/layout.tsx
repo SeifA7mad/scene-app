@@ -8,19 +8,6 @@ export const metadata: Metadata = {
   viewport: `${studioMetadata.viewport}, interactive-widget=resizes-content`,
 };
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div
-      style={{
-        width: "100%",
-      }}
-    >
-      {" "}
-      {children}
-    </div>
-  );
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <div className='w-full'> {children}</div>;
 }

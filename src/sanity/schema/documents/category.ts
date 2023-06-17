@@ -21,6 +21,10 @@ export default defineType({
       validation: (rule) => rule.required().warning('Slug is required'),
     }),
     defineField({
+      name: 'image',
+      type: 'image',
+    }),
+    defineField({
       name: 'isTopLevel',
       type: 'boolean',
       initialValue: false,

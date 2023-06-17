@@ -1,37 +1,36 @@
-import { ScSearch } from "src/assets/ScIcons";
+import { ScHamburger } from "src/assets/ScIcons";
+import { getCategories } from "src/lib/service";
 
-interface Props {
-  drawerId: string;
-}
+import { CollectionsList } from "../shared/CollectionsList";
+import { FeaturedCollections } from "../shared/FeaturedCollections";
 
-export function AppSideNav(props: Props) {
+const DRAWER_ID = "side-nav-drawer";
+
+export async function AppSideNav() {
+  const collections = await getCategories();
+  
   return (
     <div className='drawer w-auto'>
-      <input id={props.drawerId} type='checkbox' className='drawer-toggle' />
-      <div className='drawer-content '>
-        {/* Page content here */}
+      <input id={DRAWER_ID} type='checkbox' className='drawer-toggle' />
+      <div className='drawer-content'>
         <label
-          htmlFor={props.drawerId}
-          className='hidden lg:inline-flex btn btn-ghost btn-circle'
+          htmlFor={DRAWER_ID}
+          className='flex-none lg:hidden btn btn-square btn-ghost'
         >
-          <ScSearch />
+          <ScHamburger />
         </label>
       </div>
       <div className='drawer-side z-10'>
-        <label htmlFor={props.drawerId} className='drawer-overlay'></label>
-        <div className='menu p-4 w-full lg:w-80 h-full bg-base-200 text-base-content'>
+        <label htmlFor={DRAWER_ID} className='drawer-overlay'></label>
+        <div className='menu p-4 w-full lg:w-80 bg-base-200 h-full'>
           {/* Sidebar content here */}
-          <label htmlFor={props.drawerId} className='btn btn-ghost'>
-            Close
-          </label>
-          <ul>
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
-          </ul>
+          <div className='space-y-10 pb-8'>
+            <label htmlFor={DRAWER_ID} className='btn btn-ghost w-full'>
+              Close
+            </label>
+            <FeaturedCollections />
+            <CollectionsList collections={collections} />
+          </div>
         </div>
       </div>
     </div>

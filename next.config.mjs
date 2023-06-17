@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const config = {
   images: {
-    domains: ['localhost', 'cdn.sanity.io'],
+    domains: ['localhost', 'cdn.sanity.io', 'tailwindui.com'],
   },
   experimental: {
     typedRoutes: true,

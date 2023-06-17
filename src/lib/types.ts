@@ -6,6 +6,11 @@ import {
   SIZES_LIST,
 } from './constants'
 
+export interface Slug {
+  current: string;
+  _type: 'slug';
+}
+
 export interface SanityDocument {
   _id: string
   _type: string
@@ -43,7 +48,7 @@ export interface Address {
 export interface Category extends SanityDocument {
   _type: 'category'
   title: string
-  slug: string
+  slug: Slug
   description: string
   isTopLevel: boolean
   subCategories: Category[]
@@ -52,7 +57,7 @@ export interface Category extends SanityDocument {
 export interface Product extends SanityDocument {
   _type: 'product'
   name: string
-  slug: string
+  slug: Slug
   sku: string
   hidden: boolean
   description: any[]
