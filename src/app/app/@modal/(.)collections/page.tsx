@@ -1,9 +1,9 @@
 import { AppCollections } from "src/components/app/AppCollections";
-import { getCategories } from "src/lib/service";
+import { getTobLevelCategories } from "src/lib/service";
 
 // todo: revalidate on-demand
 export default async function Page() {
-  const collections = await getCategories();
+  const collections = await getTobLevelCategories();
 
   return <AppCollections collectionsList={{collections: collections}}  />;
 }

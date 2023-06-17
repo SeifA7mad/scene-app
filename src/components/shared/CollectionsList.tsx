@@ -8,7 +8,10 @@ interface Props {
 export function CollectionsList(props: Props) {
   return props.collections.map(collection => (
     <div key={collection._id}>
-      <p id={`${collection.title}-heading`} className='font-medium text-neutral'>
+      <p
+        id={`${collection.title}-heading`}
+        className='font-medium text-neutral'
+      >
         {collection.title}
       </p>
       <ul
@@ -18,8 +21,10 @@ export function CollectionsList(props: Props) {
       >
         {collection.subCategories.map(item => (
           <li key={item.title} className='flow-root lg:flex'>
+            {/* todo: fix this link */}
             <Link
-              href={`/app/collections/${item.slug.current}`}
+              href={`/app`}
+              prefetch={false}
               className='-m-2 p-2 truncate text-neutral-content hover:text-neutral-focus'
             >
               {item.title}

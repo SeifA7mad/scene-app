@@ -29,7 +29,7 @@ export function AppCart() {
         ></label>
 
         <motion.div
-          initial={{ translateX: "50%" }}
+          initial={{ translateX: "100%" }}
           animate={{ translateX: 0 }}
           transition={{ duration: 0.05 }}
           className='menu p-4 w-full lg:w-80 h-full bg-base-200 text-base-content'

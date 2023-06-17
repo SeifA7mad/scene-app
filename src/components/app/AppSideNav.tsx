@@ -1,5 +1,5 @@
 import { ScHamburger } from "src/assets/ScIcons";
-import { getCategories } from "src/lib/service";
+import { getTobLevelCategories } from "src/lib/service";
 
 import { CollectionsList } from "../shared/CollectionsList";
 import { FeaturedCollections } from "../shared/FeaturedCollections";
@@ -7,7 +7,7 @@ import { FeaturedCollections } from "../shared/FeaturedCollections";
 const DRAWER_ID = "side-nav-drawer";
 
 export async function AppSideNav() {
-  const collections = await getCategories();
+  const collections = await getTobLevelCategories();
   
   return (
     <div className='drawer w-auto'>

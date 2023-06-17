@@ -128,7 +128,7 @@ export default function DashboardOrdersTable() {
       render: (customer, { address }) => (
         <>
           <Link
-            href={`${config.dashboard_base}/desk/customer;${customer._id}`}
+            href={`${config.dashboard_base}/desk/customer;${customer._id}` as any}
             className='link-hover'
           >
             {" "}
@@ -148,7 +148,7 @@ export default function DashboardOrdersTable() {
       title: "Actions",
       render: _id => (
         <Link
-          href={`${config.dashboard_base}/desk/order;${_id}`}
+          href={`${config.dashboard_base}/desk/order;${_id}` as any}
           className='link-ghost link-hover'
         >
           details

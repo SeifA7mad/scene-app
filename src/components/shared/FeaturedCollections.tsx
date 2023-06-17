@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AppRoutes } from "src/lib/types";
 
-const featured = [
+const featured: {
+  name: string;
+  href: AppRoutes;
+  imageSrc: string;
+  imageAlt: string;
+}[] = [
   {
     name: "New Arrivals",
     href: "#",

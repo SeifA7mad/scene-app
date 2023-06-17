@@ -8,8 +8,6 @@ import { AppSearch } from "./AppSearch";
 import { AppSideNav } from "./AppSideNav";
 
 export function AppHeading() {
-  // todo: fetch categories from api
-
   return (
     <div className='w-full navbar bg-base-300 lg:px-4'>
       {/* Navbar start */}
@@ -24,7 +22,7 @@ export function AppHeading() {
       {/* Navbar center */}
       <div className='navbar-center'>
         <Link href='/app' className='btn btn-ghost normal-case text-xl'>
-          Scene app
+          Scene
         </Link>
       </div>
       {/* Navbar end */}

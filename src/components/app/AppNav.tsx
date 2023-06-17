@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AppRoutes } from "src/lib/types";
 
-// todo: add hovering content to show as dropdown
-const navLinks = [
+const navLinks: {
+  title: string;
+  href: AppRoutes;
+}[] = [
   {
     title: "Shop",
-    href: "/",
+    href: "/app",
   },
   {
     title: "Collections",
@@ -15,16 +18,16 @@ const navLinks = [
   },
   {
     title: "About",
-    href: "/about",
+    href: "#",
   },
 ];
 
 export function AppNav() {
   const pathname = usePathname();
   return (
-    <ul className='flex gap-x-8 text-xs font-bold '>
+    <ul className='flex gap-x-8 text-xs font-bold'>
       {navLinks.map(link => {
-        const isActive = pathname.startsWith(link.href);
+        const isActive = pathname === link.href;
 
         return (
           <li key={link.title}>
