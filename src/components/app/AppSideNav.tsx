@@ -1,8 +1,8 @@
 import { ScHamburger } from "src/assets/ScIcons";
 import { getTobLevelCategories } from "src/lib/service";
 
-import { CollectionsList } from "../shared/CollectionsList";
-import { FeaturedCollections } from "../shared/FeaturedCollections";
+import { CollectionsList } from "../collections/CollectionsList";
+import { FeaturedCollections } from "../collections/CollectionsFeatured";
 
 const DRAWER_ID = "side-nav-drawer";
 

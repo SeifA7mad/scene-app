@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-import { CollectionsList } from "../shared/CollectionsList";
-import { FeaturedCollections } from "../shared/FeaturedCollections";
+import { CollectionsList } from "../collections/CollectionsList";
+import { FeaturedCollections } from "../collections/CollectionsFeatured";
 
 interface Props {
   collectionsList: React.ComponentProps<typeof CollectionsList>;
