@@ -55,7 +55,7 @@ export interface Category extends SanityDocument {
   description: string;
   isTopLevel: boolean;
   subCategories: Category[];
-  image?: SanityImage
+  image?: SanityImage;
 }
 
 export interface Product extends SanityDocument {
@@ -78,7 +78,7 @@ export interface Product extends SanityDocument {
     quantity: number;
     size: (typeof SIZES_LIST)[number]["value"];
     subscribers: Customer[];
-  };
+  }[];
   offer?: {
     percentage: number;
     expiryDate: Date;
@@ -133,6 +133,12 @@ export interface Order extends SanityDocument {
   total: number;
   paymentMethod: (typeof PAYMENTMETHODS_LIST)[number]["value"];
   promoCodeApplied?: Promotion;
+}
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+  size: Product["attributes"][number]["size"];
 }
 
 export type AppRoutes = React.ComponentProps<typeof Link>["href"];

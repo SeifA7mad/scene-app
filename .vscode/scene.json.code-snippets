@@ -1,6 +1,6 @@
 {
-  "func": {
-    "prefix": "func",
+  "rfx": {
+    "prefix": "rfx",
     "description": "Next 13 TS base",
     "scope": "tsx",
     "body": [

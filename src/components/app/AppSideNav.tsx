@@ -1,8 +1,8 @@
 import { ScHamburger } from "src/assets/ScIcons";
 import { getTobLevelCategories } from "src/lib/service";
 
-import { CollectionsList } from "../collections/CollectionsList";
 import { FeaturedCollections } from "../collections/CollectionsFeatured";
+import { CollectionsList } from "../collections/CollectionsList";
 
 const DRAWER_ID = "side-nav-drawer";
 
@@ -22,7 +22,7 @@ export async function AppSideNav() {
       </div>
       <div className='drawer-side z-10'>
         <label htmlFor={DRAWER_ID} className='drawer-overlay'></label>
-        <div className='menu p-4 w-full lg:w-80 bg-base-200 h-full'>
+        <div className='menu p-4 w-full lg:w-80 bg-base-200 h-full overflow-y-auto'>
           {/* Sidebar content here */}
           <div className='space-y-10 pb-8'>
             <label htmlFor={DRAWER_ID} className='btn btn-ghost w-full'>

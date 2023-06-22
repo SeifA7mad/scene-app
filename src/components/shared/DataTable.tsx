@@ -1,6 +1,6 @@
 import { MdFilterListAlt } from "react-icons/md";
 
-import Loader from "./Loader";
+import Loader from "../ui/Loader";
 import Pagination, { Props as PaginationProps } from "./Pagination";
 
 export type DataColumns<T> = {
@@ -87,12 +87,7 @@ export default function DataTable<T extends unknown>(props: Props<T>) {
     );
   };
 
-  if (!!props.isLoading)
-    return (
-      <div className='flex justify-center items-center h-full'>
-        <Loader />
-      </div>
-    );
+  if (!!props.isLoading) return <Loader />;
 
   return (
     <div className='overflow-x-auto h-full flex flex-col justify-between'>

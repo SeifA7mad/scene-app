@@ -15,11 +15,8 @@ module.exports = {
         dark: {
           ...require("daisyui/src/theming/themes")["[data-theme=dark]"],
         },
-        retro: {
-          ...require("daisyui/src/theming/themes")["[data-theme=retro]"],
-        },
-        bumblebee: {
-          ...require("daisyui/src/theming/themes")["[data-theme=bumblebee]"],
+        winter: {
+          ...require("daisyui/src/theming/themes")["[data-theme=winter]"],
         },
       },
     ], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
