@@ -31,7 +31,7 @@ export default function GlobalError({
               </button>
               <Link
                 replace
-                href='/app'
+                href='/store'
                 className='text-sm font-semibold text-gray-900'
               >
                 Contact support <span aria-hidden='true'>&rarr;</span>

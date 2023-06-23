@@ -23,7 +23,7 @@ export function CollectionsList(props: Props) {
           <li key={item.title} className='flow-root lg:flex'>
             {/* todo: fix this link */}
             <Link
-              href={`/app`}
+              href={`/store`}
               prefetch={false}
               className='-m-2 p-2 truncate text-neutral-content hover:text-neutral-focus'
             >
