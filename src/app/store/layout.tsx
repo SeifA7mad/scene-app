@@ -1,4 +1,4 @@
-import { AppHeading } from "src/components/app/AppHeading";
+import { StoreHeading } from "src/components/store/StoreHeading";
 
 export default function Layout(props: {
   children: React.ReactNode;
@@ -6,13 +6,13 @@ export default function Layout(props: {
 }) {
   return (
     <>
-      <header>
+      <header className="h-[8vh]">
         <nav>
-          <AppHeading />
+          <StoreHeading />
           {props.modal}
         </nav>
       </header>
-      <main>{props.children}</main>
+      <main className="grid min-h-[90vh] px-4">{props.children}</main>
       <footer></footer>
     </>
   );

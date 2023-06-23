@@ -10,11 +10,11 @@ const navLinks: {
 }[] = [
   {
     title: "Shop",
-    href: "/app",
+    href: "/store",
   },
   {
     title: "Collections",
-    href: "/app/collections",
+    href: "/store/collections",
   },
   {
     title: "About",
@@ -22,7 +22,7 @@ const navLinks: {
   },
 ];
 
-export function AppNav() {
+export function StoreNav() {
   const pathname = usePathname();
   return (
     <ul className='flex gap-x-8 text-xs font-bold'>

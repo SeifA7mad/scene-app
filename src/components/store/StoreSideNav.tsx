@@ -1,4 +1,4 @@
-import { ScHamburger } from "src/assets/ScIcons";
+import {RiMenu4Line} from "react-icons/ri";
 import { getTobLevelCategories } from "src/lib/service";
 
 import { FeaturedCollections } from "../collections/CollectionsFeatured";
@@ -6,7 +6,7 @@ import { CollectionsList } from "../collections/CollectionsList";
 
 const DRAWER_ID = "side-nav-drawer";
 
-export async function AppSideNav() {
+export async function StoreSideNav() {
   const collections = await getTobLevelCategories();
   
   return (
@@ -17,7 +17,7 @@ export async function AppSideNav() {
           htmlFor={DRAWER_ID}
           className='flex-none lg:hidden btn btn-square btn-ghost'
         >
-          <ScHamburger />
+          <RiMenu4Line className="text-2xl" />
         </label>
       </div>
       <div className='drawer-side z-10'>

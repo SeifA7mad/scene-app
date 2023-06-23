@@ -3,37 +3,35 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
-import { getCartItems } from "src/lib/service";
+import { Product } from "src/lib/types";
 import { useCartStore } from "src/store/cart";
-import useSWR from "swr";
 
 import { SPrice } from "../ui/SPrice";
 
-export function CartSummary() {
-  const { items } = useCartStore();
-  const router = useRouter();
+interface Props {
+  data?: Product[];
+  navigateToHome?: boolean;
+}
 
-  const { data } = useSWR(
-    {
-      items,
-    },
-    ({ items }) => getCartItems(items.map(i => i.id)),
-  );
+export function BagSummary(props: Props) {
+  const router = useRouter();
+  const { items } = useCartStore();
+
 
   const total = useMemo(
     () =>
-      data?.reduce((acc, item) => {
-        const cartItem = items.find(i => i.id === item._id);
-        return acc + item.price * (cartItem?.quantity ?? 1);
+    props.data?.reduce((acc, item) => {
+        const BagItem = items.find(i => i.id === item._id);
+        return acc + item.price * (BagItem?.quantity ?? 1);
       }, 0),
-    [data, items],
+    [props.data, items],
   );
 
   return (
     <div className='border-t border-base-100 px-4 py-6 sm:px-6'>
       <div className='flex justify-between text-base font-medium text-neutral'>
         <p>Subtotal</p>
-        <p><SPrice price={total ?? 0} /></p>
+        <SPrice price={total ?? 0} />
       </div>
       <p className='mt-0.5 text-sm text-neutral-content'>
         Shipping and taxes calculated at checkout.
@@ -51,7 +49,7 @@ export function CartSummary() {
         <p>
           or{" "}
           <button
-            onClick={() => router.back()}
+            onClick={() => !!props.navigateToHome ? router.push('/store') : router.back()}
             type='button'
             className='font-medium text-primary hover:text-primary-focus'
           >

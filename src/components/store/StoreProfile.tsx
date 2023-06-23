@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-export function AppProfile() {
+export function StoreProfile() {
   // todo: access global state & hide it when not logged in
   // if (!isLoggedIn) {
   //   return null;
@@ -27,10 +27,10 @@ export function AppProfile() {
         className='menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
       >
         <li>
-          <Link href='/app'>Profile</Link>
+          <Link href='/store'>Profile</Link>
         </li>
         <li>
-          <Link href='/app'>Logout</Link>
+          <Link href='/store'>Logout</Link>
         </li>
       </ul>
     </div>

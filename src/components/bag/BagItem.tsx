@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CartItem as CartItemType } from "src/lib/types";
+import { BagItem as BagItemType } from "src/lib/types";
 import { useCartStore } from "src/store/cart";
 
 import { SPrice } from "../ui/SPrice";
 import { SProductColor } from "../ui/SProductColor";
 
-interface Props extends CartItemType {}
+interface Props extends BagItemType {}
 
-export function CartItem(props: Props) {
+export function BagItem(props: Props) {
   const { removeFromCart, changeQuantity } = useCartStore();
   const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     changeQuantity({
@@ -51,7 +51,7 @@ export function CartItem(props: Props) {
           <div className='flex justify-between text-base font-medium text-neutral w-full'>
             {/* todo: change this link to navigate to product slug */}
             <h3>
-              <Link href={"/app"}>{props.product.name}</Link>
+              <Link href={"/store"}>{props.product.name}</Link>
             </h3>
             <SPrice price={props.product.price} />
           </div>

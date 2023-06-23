@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-import { CollectionsList } from "../collections/CollectionsList";
 import { FeaturedCollections } from "../collections/CollectionsFeatured";
+import { CollectionsList } from "../collections/CollectionsList";
 
 interface Props {
   collectionsList: React.ComponentProps<typeof CollectionsList>;
 }
 
-export function AppCollections(props: Props) {
+export function StoreCollections(props: Props) {
   const router = useRouter();
 
   return (
@@ -18,7 +18,7 @@ export function AppCollections(props: Props) {
       <motion.div
         initial={{ translateY: "-100%" }}
         animate={{ translateY: 0 }}
-        transition={{ type: "just", duration: 0.1 }}
+        transition={{ duration: 0.1 }}
         className='modal-box max-h-none'
       >
         <div className='relative bg-white'>

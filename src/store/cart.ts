@@ -3,17 +3,17 @@ import { Product } from "src/lib/types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface CartItemStore {
+interface BagItemStore {
   id: string;
   quantity: number;
   size: Product["attributes"][number]["size"];
 }
 
 interface CartStore {
-  items: CartItemStore[];
-  addToCart: (item: CartItemStore) => void;
+  items: BagItemStore[];
+  addToCart: (item: BagItemStore) => void;
   removeFromCart: (itemId: string) => void;
-  changeQuantity: (item: Omit<CartItemStore, "size">) => void;
+  changeQuantity: (item: Omit<BagItemStore, "size">) => void;
 }
 
 export const useCartStore = create<CartStore>()(

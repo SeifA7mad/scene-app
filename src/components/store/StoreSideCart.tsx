@@ -2,19 +2,33 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { getBagItems } from "src/lib/service";
+import { useCartStore } from "src/store/cart";
+import useSWR from "swr";
 
-import { CartList } from "../cart/CartList";
-import { CartSummary } from "../cart/CartSummary";
+import { BagList } from "../bag/BagList";
+import { BagSummary } from "../bag/BagSummary";
 
 const DRAWER_ID = "cart-drawer";
 
-export function AppCart() {
+export function StoreSideCart() {
   const router = useRouter();
+  const { items } = useCartStore();
 
   const close = () => {
     router.back();
   };
-  // todo: access global state to get cart items
+
+
+  const { data, isLoading, error } = useSWR(
+    {
+      items,
+    },
+    ({ items }) => getBagItems(items.map(i => i.id)),
+  );
+
+  if (error) throw new Error();
+
   return (
     <div className='drawer drawer-end'>
       <input
@@ -38,9 +52,9 @@ export function AppCart() {
           className='flex flex-col justify-between p-4 w-full lg:w-[35rem] h-full bg-base-200 text-base-content gap-y-4'
         >
           {/* Sidebar content here */}
-          <h1 className="text-lg font-medium text-neutral"> Shopping cart </h1>
-          <CartList />
-          <CartSummary />
+          <h1 className='text-lg font-medium text-neutral'> Shopping bag </h1>
+          <BagList isLoading={isLoading} data={data} />
+          <BagSummary data={data} />
         </motion.div>
       </div>
     </div>

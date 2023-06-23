@@ -135,7 +135,7 @@ export interface Order extends SanityDocument {
   promoCodeApplied?: Promotion;
 }
 
-export interface CartItem {
+export interface BagItem {
   product: Product;
   quantity: number;
   size: Product["attributes"][number]["size"];

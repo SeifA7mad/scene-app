@@ -27,7 +27,7 @@ export const getCategories = cache(async () => {
   return await client.fetch<Category[]>(query);
 });
 
-export const getCartItems = cache(async (ids: string[]) => {
+export const getBagItems = cache(async (ids: string[]) => {
   const query = groq`*[_type == 'product' && _id in $ids] {
     _id,
      slug,

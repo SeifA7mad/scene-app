@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export const config = {
-  matcher: ['/', '/app/(.*)', '/studio/(.*)'],
+  matcher: ['/', '/store/(.*)', '/studio/(.*)'],
 };
 
 
 const middlewareHandlers = {
   '/': async (req: NextRequest) => {
     const { nextUrl } = req
-    nextUrl.pathname += 'app';
+    nextUrl.pathname += 'store';
     return NextResponse.redirect(nextUrl);
    },
-  '/app': async (req: NextRequest) => { },
+  '/store': async (req: NextRequest) => { },
   '/studio': async (req: NextRequest) => { },
 }
 

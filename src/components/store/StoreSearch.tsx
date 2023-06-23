@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { ScSearch } from "src/assets/ScIcons";
+import { MdManageSearch } from "react-icons/md";
 
-export function AppSearch() {
+export function StoreSearch() {
   const dialogRef = React.useRef<HTMLDialogElement>(null);
 
   return (
@@ -12,7 +12,7 @@ export function AppSearch() {
         className='btn btn-ghost btn-circle'
         onClick={() => dialogRef.current?.showModal()}
       >
-        <ScSearch />
+        <MdManageSearch className="text-3xl" />
       </button>
       <dialog
         ref={dialogRef}
