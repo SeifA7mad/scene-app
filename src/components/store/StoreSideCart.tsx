@@ -19,11 +19,12 @@ export function StoreSideCart() {
     router.back();
   };
 
-
   const { data, isLoading, error } = useSWR(
-    {
-      items,
-    },
+    items?.length
+      ? {
+          items,
+        }
+      : null,
     ({ items }) => getBagItems(items.map(i => i.id)),
   );
 

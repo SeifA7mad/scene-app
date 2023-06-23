@@ -1,3 +1,4 @@
+import { StoreFooter } from "src/components/store/StoreFooter";
 import { StoreHeading } from "src/components/store/StoreHeading";
 
 export default function Layout(props: {
@@ -12,8 +13,8 @@ export default function Layout(props: {
           {props.modal}
         </nav>
       </header>
-      <main className="grid min-h-[90vh] px-4">{props.children}</main>
-      <footer></footer>
+      <main className="grid min-h-[92vh] px-4">{props.children}</main>
+      <StoreFooter />
     </>
   );
 }

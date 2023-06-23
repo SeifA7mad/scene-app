@@ -1,8 +1,5 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-
+import { AiOutlineUser } from "react-icons/ai";
 
 export function StoreProfile() {
   // todo: access global state & hide it when not logged in
@@ -12,15 +9,8 @@ export function StoreProfile() {
 
   return (
     <div className='dropdown dropdown-end'>
-      <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
-        <div className='w-10 rounded-full'>
-          <Image
-            alt='avatar'
-            width={20}
-            height={20}
-            src='/images/stock/photo-1534528741775-53994a69daeb.jpg'
-          />
-        </div>
+      <label tabIndex={0} className='btn btn-ghost btn-circle'>
+        <AiOutlineUser className="text-2xl" />
       </label>
       <ul
         tabIndex={0}
