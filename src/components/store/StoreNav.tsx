@@ -25,15 +25,15 @@ const navLinks: {
 export function StoreNav() {
   const pathname = usePathname();
   return (
-    <ul className='flex gap-x-8 text-xs font-bold'>
+    <ul className='flex gap-x-8 text-sm font-bold'>
       {navLinks.map(link => {
         const isActive = pathname === link.href;
 
         return (
           <li key={link.title}>
             <Link
-              className={`cursor-pointer hover:text-accent ${
-                isActive ? "text-accent" : ""
+              className={`cursor-pointer hover:text-primary-focus ${
+                isActive ? "text-primary-focus" : ""
               }`}
               href={link.href}
             >

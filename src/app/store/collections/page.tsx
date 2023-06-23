@@ -6,7 +6,7 @@ export default async function Page() {
   const collections = await getCategories();
 
   return (
-    <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+    <div className='mx-auto w-full px-4 sm:px-6 lg:px-8'>
       <div className='mx-auto max-w-2xl py-16 lg:max-w-none'>
         <h2 className='text-2xl font-bold text-gray-900'>Collections</h2>
 
@@ -30,7 +30,7 @@ export default async function Page() {
               </div>
               <h3 className='mt-6 text-sm text-gray-500'>
                 {/* todo: fix this link */}
-                <Link prefetch={false} href={"/app"}>
+                <Link prefetch={false} href={"/store"}>
                   <span className='absolute inset-0' />
                   {collection.title}
                 </Link>
