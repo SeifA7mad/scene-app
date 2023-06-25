@@ -11,7 +11,7 @@ export function CollectionsSubList(props: Props) {
   return (
     <ul
       role='list'
-      className='space-y-4 pl-4 border-b border-base-100 pb-6 text-sm font-medium text-secondary hover:text-secondary-focus'
+      className='space-y-4 pl-4 border-b border-base-100 pb-6 text-base font-bold text-secondary hover:text-secondary-focus'
     >
       {props.collections.map(collection => (
         <li key={collection._id}>
