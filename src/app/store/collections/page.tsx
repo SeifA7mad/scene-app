@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCategories } from "src/lib/service";
 
+// todo: revalidate on-demand
 export default async function Page() {
   const collections = await getCategories();
 
@@ -24,13 +25,16 @@ export default async function Page() {
                   className='h-full w-full object-cover object-center'
                   width={500}
                   height={500}
-                  blurDataURL={collection.image?.asset.metadata.blurHash ?? undefined}
-                  placeholder={collection.image ? 'blur' : 'empty'}
+                  blurDataURL={
+                    collection.image?.asset.metadata.blurHash ?? undefined
+                  }
+                  placeholder={collection.image ? "blur" : "empty"}
                 />
               </div>
               <h3 className='mt-6 text-sm text-gray-500'>
-                {/* todo: fix this link */}
-                <Link prefetch={false} href={"/store"}>
+                <Link
+                  href={`/store/collections/${collection.slug.current}`}
+                >
                   <span className='absolute inset-0' />
                   {collection.title}
                 </Link>

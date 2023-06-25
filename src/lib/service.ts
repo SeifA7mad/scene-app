@@ -27,6 +27,17 @@ export const getCategories = cache(async () => {
   return await client.fetch<Category[]>(query);
 });
 
+export const getCategory = cache(async (slug: string) => {
+  const query = groq`*[_type == 'category' &&  slug.current == $slug] | order(title asc)[0] {
+    _id,
+    title,
+    slug,
+    subCategories[]->
+  }`;
+
+  return await client.fetch<Category>(query, { slug });
+});
+
 export const getBagItems = cache(async (ids: string[]) => {
   const query = groq`*[_type == 'product' && _id in $ids] {
     _id,
@@ -38,6 +49,16 @@ export const getBagItems = cache(async (ids: string[]) => {
      attributes,
      images[] {asset->{url, metadata{blurHash}}},
    }`;
-  
+
   return await client.fetch<Product[]>(query, { ids });
+});
+
+export const getColors = cache(async (categoryId: string, subCategoriesIds: string[]) => {
+  const query = groq`*[_type == "product" && category._ref == $categoryId || category._ref in $subCategoriesIds] {
+    color
+  }`;
+
+  const products = await client.fetch<Product[]>(query, { categoryId, subCategoriesIds });
+
+  return [...new Set(products.map((item) => item.color))];
 });
