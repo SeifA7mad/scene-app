@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import ntcjs from "ntcjs";
 import { Product } from "src/lib/types";
 
 import { SPrice } from "../ui/SPrice";
@@ -36,9 +35,9 @@ export function ProductCard(props: Props) {
           </h3>
           <div className='flex items-center gap-x-2 mt-1'>
             <p className='text-sm text-neutral-content'>
-              {ntcjs.name(props.product.color)[1]}
+              {props.product.color.name}
             </p>
-            <SProductColor color={props.product.color} />
+            <SProductColor color={props.product.color.code} />
           </div>
         </div>
         <div>

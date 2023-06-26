@@ -71,7 +71,10 @@ export interface Product extends SanityDocument {
   keywords: string[];
   price: number;
   soldQuantity: number;
-  color: string;
+  color: {
+    name: string;
+    code: string;
+  };
   totalQuantity: number;
   images: SanityImage[];
   attributes: {

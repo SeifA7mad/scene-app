@@ -78,13 +78,24 @@ export default defineType({
     }),
     defineField({
       name: 'color',
-      type: 'string',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'code',
+          type: 'string',
+          validation: (rule) =>
+          rule
+            .required()
+            .regex(new RegExp('^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'))
+            .error('must be hex color code'),
+        }),
+        defineField({
+          name: 'name',
+          type: 'string',
+        }),
+      ],
+      validation: (rule) => rule.required(),
       description: 'hex color code',
-      validation: (rule) =>
-        rule
-          .required()
-          .regex(new RegExp('^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'))
-          .error('must be hex color code'),
     }),
     defineField({
       name: 'totalQuantity',
