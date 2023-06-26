@@ -58,7 +58,7 @@ export function BagItem(props: Props) {
 
           <div className='text-sm text-neutral-focus'>
             <p className='flex items-center gap-x-2'>
-              Color: <SProductColor color={props.product.color} />{" "}
+              Color: <SProductColor color={props.product.color.code} />{" "}
             </p>
             <p> Size: {props.size?.toLocaleUpperCase()} </p>
           </div>
