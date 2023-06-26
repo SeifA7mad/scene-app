@@ -2,6 +2,7 @@ import { BsFillGridFill } from "react-icons/bs";
 import { CollectionFilters } from "src/components/collections/CollectionFilters";
 import { CollectionSideFilters } from "src/components/collections/CollectionSideFilters";
 import { CollectionSort } from "src/components/collections/CollectionSort";
+import { ProductList } from "src/components/product/ProductList";
 import { getCategories, getCategory, getColors } from "src/lib/service";
 
 export async function generateStaticParams() {
@@ -16,14 +17,16 @@ export async function generateStaticParams() {
 export default async function Page(props: { params: { slug: string } }) {
   const collection = await getCategory(props.params.slug);
 
-  const colors = await getColors(
+  const categoryIds = [
     collection._id,
-    collection.subCategories?.map(sub => sub._id) ?? [],
-  );
+    ...(collection.subCategories?.map(sub => sub._id) ?? []),
+  ];
+
+  const colors = await getColors(categoryIds);
 
   return (
-    <section className='mx-auto w-full px-4 sm:px-6 lg:px-8'>
-      <div className='flex items-baseline justify-between border-b border-base-100 pb-6 pt-24'>
+    <section className='mx-auto w-full lg:px-8'>
+      <div className='flex items-baseline justify-between border-b border-base-100 pb-6 pt-12'>
         <h1 className='text-4xl font-bold tracking-tight text-primary'>
           {collection.title}
         </h1>
@@ -46,7 +49,7 @@ export default async function Page(props: { params: { slug: string } }) {
         </div>
       </div>
 
-      <section aria-labelledby='products-heading' className='pb-24 pt-6'>
+      <section aria-labelledby='products-heading' className='pb-24'>
         <h2 id='products-heading' className='sr-only'>
           Products
         </h2>
@@ -60,7 +63,9 @@ export default async function Page(props: { params: { slug: string } }) {
           />
 
           {/* Product grid */}
-          <div className='lg:col-span-3'>{/* Your content */}</div>
+          <div className='lg:col-span-3'>
+            <ProductList categoryIds={categoryIds} />
+          </div>
         </div>
       </section>
     </section>

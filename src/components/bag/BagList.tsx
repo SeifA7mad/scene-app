@@ -19,7 +19,7 @@ export function BagList(props: Props) {
   if (props.isLoading) {
     return (
       <ul className='flex flex-col gap-y-6 w-full overflow-x-hidden overflow-y-auto h-full'>
-        {[...Array(5)].map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <BagItemSkelton key={i} />
         ))}
       </ul>

@@ -25,7 +25,7 @@ export function BagItem(props: Props) {
     )?.quantity;
     if (!quantity) return null;
 
-    return Array.from(Array(quantity).keys()).map(i => (
+    return Array.from({ length: quantity }).map((_, i) => (
       <option key={i} value={i + 1}>
         {i + 1}
       </option>

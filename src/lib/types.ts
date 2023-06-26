@@ -81,7 +81,7 @@ export interface Product extends SanityDocument {
   }[];
   offer?: {
     percentage: number;
-    expiryDate: Date;
+    expiryDate: string;
   };
   sizeChart: any;
   subscribers: Customer[];

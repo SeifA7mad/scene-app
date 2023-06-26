@@ -53,12 +53,25 @@ export const getBagItems = cache(async (ids: string[]) => {
   return await client.fetch<Product[]>(query, { ids });
 });
 
-export const getColors = cache(async (categoryId: string, subCategoriesIds: string[]) => {
-  const query = groq`*[_type == "product" && category._ref == $categoryId || category._ref in $subCategoriesIds] {
+export const getColors = cache(async (categoryIds: string[]) => {
+  const query = groq`*[_type == "product" && category._ref in $categoryIds] {
     color
   }`;
 
-  const products = await client.fetch<Product[]>(query, { categoryId, subCategoriesIds });
+  const products = await client.fetch<Product[]>(query, { categoryIds });
 
-  return [...new Set(products.map((item) => item.color))];
+  return [...new Set(products.map(item => item.color))];
+});
+
+export const getProducts = cache(async (categoryIds: string[]) => {
+  const query = groq`*[_type == "product" && category._ref in $categoryIds] {
+    _id,
+    name,
+    price,
+    images[] {asset->{url, metadata{blurHash}}},
+    color,
+    offer
+  }`;
+
+  return client.fetch<Product[]>(query, { categoryIds });
 });
