@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { useFilter } from "src/hooks/useFilter";
 
 export interface Props {
+  queryKey: string;
   options: {
     label: string;
     value: string;
@@ -9,6 +13,11 @@ export interface Props {
 }
 
 export function SortDropdown(props: Props) {
+  const { handleFilter } = useFilter({
+    queryKey: props.queryKey,
+    single: true,
+  });
+
   return (
     <div className='dropdown dropdown-end'>
       <label
@@ -28,13 +37,7 @@ export function SortDropdown(props: Props) {
             key={option.label}
           >
             {/* todo: fix this link */}
-            <Link
-              href={{
-                query: `sort=${option.value}`,
-              }}
-            >
-              {option.label}
-            </Link>
+            <button type='button' onClick={() => handleFilter(option.value)}>{option.label}</button>
           </li>
         ))}
       </ul>

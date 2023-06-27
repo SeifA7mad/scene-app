@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import { BsFillGridFill } from "react-icons/bs";
 import { CollectionFilters } from "src/components/collections/CollectionFilters";
 import { CollectionSideFilters } from "src/components/collections/CollectionSideFilters";
 import { CollectionSort } from "src/components/collections/CollectionSort";
 import { ProductList } from "src/components/product/ProductList";
+import SLoading from "src/components/ui/SLoading";
 import { getCategories, getCategory, getColors } from "src/lib/service";
 
 export async function generateStaticParams() {
@@ -33,7 +35,9 @@ export default async function Page(props: { params: { slug: string } }) {
 
         <div className='flex items-center gap-x-3'>
           {/* Sort */}
-          <CollectionSort />
+          <Suspense fallback={<SLoading />}>
+            <CollectionSort />
+          </Suspense>
 
           <button
             type='button'
@@ -42,10 +46,12 @@ export default async function Page(props: { params: { slug: string } }) {
             <span className='sr-only'>View grid</span>
             <BsFillGridFill className='text-2xl' aria-hidden='true' />
           </button>
-          <CollectionSideFilters
-            collections={collection.subCategories}
-            colors={colors}
-          />
+          <Suspense fallback={<SLoading />}>
+            <CollectionSideFilters
+              collections={collection.subCategories}
+              colors={colors}
+            />
+          </Suspense>
         </div>
       </div>
 
@@ -56,15 +62,19 @@ export default async function Page(props: { params: { slug: string } }) {
 
         <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4'>
           {/* Filters sub-categories */}
-          <CollectionFilters
-            collections={collection.subCategories}
-            colors={colors}
-            className='hidden lg:block'
-          />
+          <Suspense fallback={<SLoading />}>
+            <CollectionFilters
+              collections={collection.subCategories}
+              colors={colors}
+              className='hidden lg:block'
+            />
+          </Suspense>
 
           {/* Product grid */}
           <div className='lg:col-span-3'>
-            <ProductList categoryIds={categoryIds} />
+            <Suspense fallback={<SLoading />}>
+              <ProductList categoryIds={categoryIds} />
+            </Suspense>
           </div>
         </div>
       </section>

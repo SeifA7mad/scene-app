@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { getTobLevelCategories } from "src/lib/service";
 
 export async function StoreFooter() {
   const collections = await getTobLevelCategories();
-
+  // todo: fix links
   return (
     <>
       <footer className='footer p-10 bg-base-200 text-base-content'>
@@ -15,9 +16,13 @@ export async function StoreFooter() {
         <div>
           <span className='footer-title'>Collections</span>
           {collections.map(collection => (
-            <a key={collection._id} className='link link-hover'>
+            <Link
+              href={`/store/collections/${collection.slug.current}`}
+              key={collection._id}
+              className='link link-hover'
+            >
               {collection.title}
-            </a>
+            </Link>
           ))}
         </div>
         <div>

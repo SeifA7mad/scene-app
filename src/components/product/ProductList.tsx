@@ -13,13 +13,21 @@ interface Props {
 }
 
 export function ProductList(props: Props) {
-  // todo: handle searchParams filters
+  // todo: handle sort filter
+  // todo: add infinite pagination
+  const searchParams = useSearchParams();
+
+
   const { data, isLoading, error } = useSWR(
     {
       name: "products",
       categoryIds: props.categoryIds,
+      filters: searchParams
     },
-    ({ categoryIds }) => getProducts(categoryIds),
+    ({ categoryIds, filters }) => getProducts(categoryIds, {
+      colors: filters.getAll('colors'),
+      sizes: filters.getAll('sizes')
+    }),
   );
 
   if (error) throw new Error();

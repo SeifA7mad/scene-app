@@ -20,6 +20,7 @@ export function CollectionFilters(props: Props) {
       <div>
         <SFilter
           title='Color'
+          queryKey="colors"
           options={props.colors.map(color => ({
             label: color.name,
             value: color.code,
@@ -27,6 +28,7 @@ export function CollectionFilters(props: Props) {
         />
         <SFilter
           title='Size'
+          queryKey="sizes"
           options={SIZES_LIST.map(size => ({
             label: size.title,
             value: size.value as string,

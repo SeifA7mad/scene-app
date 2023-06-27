@@ -15,5 +15,5 @@ export function CollectionSort() {
     },
   ];
 
-  return <SortDropdown options={options} />;
+  return <SortDropdown queryKey="sort" options={options} />;
 }
