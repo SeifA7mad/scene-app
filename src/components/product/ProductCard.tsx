@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Product } from "src/lib/types";
 
 import { SPrice } from "../ui/SPrice";
@@ -10,17 +13,23 @@ interface Props {
 }
 
 export function ProductCard(props: Props) {
-  // todo: change image on hover
+  const [imageIndex, setImageIndex] = useState(0);
+  
   return (
-    <div key={props.product._id} className='group relative'>
+    <div
+      onMouseOver={() => setImageIndex(1)}
+      onMouseOut={() => setImageIndex(0)}
+      key={props.product._id}
+      className='group relative'
+    >
       <div className='aspect-h-2 aspect-w-1 w-full overflow-hidden bg-base-200 lg:aspect-none group-hover:opacity-75 lg:h-[30rem] 2xl:h-[40rem] rounded-lg'>
         <Image
-          src={props.product.images[0].asset.url}
+          src={props.product.images[imageIndex].asset.url}
           alt={props.product.name}
           className='h-full w-full object-cover object-center lg:h-full lg:w-full'
           width={400}
           height={680}
-          blurDataURL={props.product.images[0].asset.metadata.blurHash}
+          blurDataURL={props.product.images[imageIndex].asset.metadata.blurHash}
           placeholder='blur'
         />
       </div>
@@ -28,7 +37,7 @@ export function ProductCard(props: Props) {
         <div>
           <h3 className='text-sm text-neutral hover:text-neutral-focus'>
             {/* todo: fix this link */}
-            <Link href={"/store"}>
+            <Link href={"#"}>
               <span aria-hidden='true' className='absolute inset-0' />
               {props.product.name}
             </Link>

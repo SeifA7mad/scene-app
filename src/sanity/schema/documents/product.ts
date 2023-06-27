@@ -107,7 +107,7 @@ export default defineType({
       name: 'images',
       type: 'array',
       of: [{ type: 'image' }],
-      validation: (rule) => rule.required().min(1).max(5),
+      validation: (rule) => rule.required().min(2).max(5),
     }),
     defineField({
       name: 'attributes',
