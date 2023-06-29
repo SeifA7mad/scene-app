@@ -4,6 +4,7 @@ import { CollectionFilters } from "src/components/collections/CollectionFilters"
 import { CollectionSideFilters } from "src/components/collections/CollectionSideFilters";
 import { CollectionSort } from "src/components/collections/CollectionSort";
 import { ProductList } from "src/components/product/ProductList";
+import { ProductPagination } from "src/components/product/ProductPagination";
 import SLoading from "src/components/ui/SLoading";
 import { getCategories, getCategory, getColors } from "src/lib/service";
 
@@ -74,6 +75,7 @@ export default async function Page(props: { params: { slug: string } }) {
           <div className='lg:col-span-3'>
             <Suspense fallback={<SLoading />}>
               <ProductList categoryIds={categoryIds} />
+              <ProductPagination />
             </Suspense>
           </div>
         </div>
