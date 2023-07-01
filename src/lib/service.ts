@@ -70,24 +70,36 @@ export const getProducts = cache(
       colors?: string[] | null;
       sizes?: string[] | null;
       sort?: string | null;
+      offset: number;
+      limit: number;
     },
   ) => {
-    const query = groq`*[_type == "product" && category._ref in $categoryIds 
-    && ($colors == null || color.code in $colors)
-    && ($sizes == null || count((attributes[].size)[@ in $sizes]) > 0 )] {
-      _id,
-      name,
-      price,
-      images[] {asset->{url, metadata{blurHash}}},
-      color,
-      attributes[],
-      offer
+    const query = groq`{
+    "products": *[_type == "product" && category._ref in $categoryIds 
+      && ($colors == null || color.code in $colors)
+      && ($sizes == null || count((attributes[].size)[@ in $sizes]) > 0 )] [$offset...$limit] {
+        _id,
+        name,
+        price,
+        images[] {asset->{url, metadata{blurHash}}},
+        color,
+        attributes[],
+        offer
+      },
+    "total": count(*[_type == "product" && category._ref in $categoryIds 
+      && ($colors == null || color.code in $colors)
+      && ($sizes == null || count((attributes[].size)[@ in $sizes]) > 0 )])
     }`;
 
-    return client.fetch<Product[]>(query, {
+    return client.fetch<{
+      products: Product[];
+      total: number;
+    }>(query, {
       categoryIds,
       colors: filters.colors?.length ? filters.colors : null,
       sizes: filters.sizes?.length ? filters.sizes : null,
+      offset: filters.offset,
+      limit: filters.limit,
     });
   },
 );
