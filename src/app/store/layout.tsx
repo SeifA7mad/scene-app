@@ -7,13 +7,13 @@ export default function Layout(props: {
 }) {
   return (
     <>
-      <header className="h-[8vh]">
+      <header>
         <nav>
           <StoreHeading />
           {props.modal}
         </nav>
       </header>
-      <main className="grid min-h-[92vh] px-4">{props.children}</main>
+      <main className="grid min-h-full px-4">{props.children}</main>
       <StoreFooter />
     </>
   );
